@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../styles/InputForm.css";
 import InputGroup from "./InputGroup";
 
-function InputForm(props) {
+function InputForm({formType}) {
 	const formItemData = {
 		general: {
 			cardTitle: "General Information",
@@ -103,16 +103,27 @@ function InputForm(props) {
 		},
 	};
 
-	const { cardTitle, formItems } = formItemData[props.formType] || {
+	const { cardTitle, formItems } = formItemData[formType] || {
 		cardTitle: "Default",
 		formItems: [],
 	};
 
+	const [formData, setFormData] = useState({});
+
+	const handleInputChange = (key, value) => {
+		setFormData((prevData) => ({ ...prevData, [key]: value }));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(cardTitle + " Form Data:", formData);
+	};
+
 	return (
 		<>
-			<form className="input-card">
+			<form className="input-card" onSubmit={handleSubmit}>
 				<h2>{cardTitle}</h2>
-				<InputGroup formItems={formItems} />
+				<InputGroup formItems={formItems} onInputChange={handleInputChange} />
 				<button className="submit-input">Update</button>
 			</form>
 		</>
