@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+
+import InputForm from "./components/InputForm";
+
+import "./styles/Editor.css";
+import "./styles/Preview.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+	const formTypes = ["general", "education", "experience", "projects"];
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<>
+			<div className="editor-container">
+				{formTypes.map((formType) => (
+					<InputForm formType={formType} />
+				))}
+			</div>
+
+			<div className="preview-container">
+				<div className="preview-page"></div>
+			</div>
+		</>
+	);
 }
 
-export default App
+export default App;
