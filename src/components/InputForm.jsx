@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../styles/InputForm.css";
 import InputGroup from "./InputGroup";
 
-function InputForm({formType}) {
+function InputForm({ previewUpdate, formType }) {
 	const formItemData = {
 		general: {
 			cardTitle: "General Information",
@@ -32,52 +32,52 @@ function InputForm({formType}) {
 			cardTitle: "Education",
 			formItems: [
 				{
-					key: 1,
+					key: 4,
 					title: "Institution",
 					placeholder: "School/University",
 					type: "text",
 				},
 				{
-					key: 2,
+					key: 5,
 					title: "Degree",
 					placeholder: "Degree/Field of study",
 					type: "text",
 				},
 				{
-					key: 3,
+					key: 6,
 					title: "Start Date",
 					placeholder: "Start Date",
 					type: "text",
 				},
-				{ key: 4, title: "End Date", placeholder: "End Date", type: "text" },
-				{ key: 5, title: "Location", placeholder: "Location", type: "text" },
+				{ key: 7, title: "End Date", placeholder: "End Date", type: "text" },
+				{ key: 8, title: "Location", placeholder: "Location", type: "text" },
 			],
 		},
 		experience: {
 			cardTitle: "Experience",
 			formItems: [
 				{
-					key: 1,
+					key: 9,
 					title: "Company Name",
 					placeholder: "Company name",
 					type: "text",
 				},
 				{
-					key: 2,
+					key: 10,
 					title: "Position Title",
 					placeholder: "Position Title",
 					type: "text",
 				},
 				{
-					key: 3,
+					key: 11,
 					title: "Start Date",
 					placeholder: "Start Date",
 					type: "text",
 				},
-				{ key: 4, title: "End Date", placeholder: "End Date", type: "text" },
-				{ key: 5, title: "Location", placeholder: "Location", type: "text" },
+				{ key: 12, title: "End Date", placeholder: "End Date", type: "text" },
+				{ key: 13, title: "Location", placeholder: "Location", type: "text" },
 				{
-					key: 6,
+					key: 14,
 					title: "Description",
 					placeholder: "Role description",
 					type: "text",
@@ -88,13 +88,13 @@ function InputForm({formType}) {
 			cardTitle: "Projects",
 			formItems: [
 				{
-					key: 1,
+					key: 15,
 					title: "Project Title",
 					placeholder: "Company name",
 					type: "text",
 				},
 				{
-					key: 2,
+					key: 16,
 					title: "Description",
 					placeholder: "Role description",
 					type: "text",
@@ -110,13 +110,13 @@ function InputForm({formType}) {
 
 	const [formData, setFormData] = useState({});
 
-	const handleInputChange = (key, value) => {
-		setFormData((prevData) => ({ ...prevData, [key]: value }));
+	const handleInputChange = (title, value) => {
+		setFormData((prevData) => ({ ...prevData, [title]: value }));
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(cardTitle + " Form Data:", formData);
+		previewUpdate(formType, [cardTitle, formData]);
 	};
 
 	return (
