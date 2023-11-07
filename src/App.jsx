@@ -1,7 +1,7 @@
-// App.jsx
+import { useState } from "react";
 
-import React, { useState } from "react";
 import InputForm from "./components/InputForm";
+
 import "./styles/Editor.css";
 import "./styles/Preview.css";
 
