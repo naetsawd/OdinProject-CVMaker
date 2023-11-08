@@ -17,7 +17,7 @@ function App() {
 		projects: 1,
 	});
 
-	const stateSelector = (formType) => {
+	const setStateSelector = (formType) => {
 		switch (formType) {
 			case "general":
 				return setGenData;
@@ -32,6 +32,21 @@ function App() {
 		}
 	};
 
+	const stateSelector = (formType) => {
+		switch (formType) {
+			case "general":
+				return genData;
+			case "education":
+				return eduData;
+			case "experience":
+				return expData;
+			case "projects":
+				return projData;
+			default:
+				return null;
+		}
+	};
+
 	const addForm = (formType) => {
 		setFormCounts((prevCounts) => ({
 			...prevCounts,
@@ -39,72 +54,91 @@ function App() {
 		}));
 	};
 
+	const delForm = (formType) => {
+		const count = formCounts[formType]-1
+		delete stateSelector(formType)[formType+"-" + count]
+
+		setFormCounts((prevCounts) => ({
+			...prevCounts,
+			[formType]: prevCounts[formType] - 1,
+		}));
+	};
+
 	return (
 		<>
 			<div className="editor-container">
+				<button onClick={() => console.log(eduData)}>Edu Log</button>
 				{formTypes.map((formType) => (
 					<div key={formType}>
 						{[...Array(formCounts[formType])].map((_, index) => (
 							<InputForm
 								key={`${formType}-${index}`}
+								formKey={`${formType}-${index}`}
 								formType={formType}
-								setData={stateSelector(formType)}
+								setData={setStateSelector(formType)}
 							/>
 						))}
 						{formType !== "general" && (
-							<button onClick={() => addForm(formType)}>
-								{"+" + formType}
-							</button>
+							<>
+								<button onClick={() => addForm(formType)}>
+									{"+" + formType}
+								</button>
+								{formCounts[formType] !== 1 && (
+									<button onClick={() => delForm(formType)}>
+										{"-" + formType}
+									</button>
+								)}
+							</>
 						)}
 					</div>
 				))}
 			</div>
 
 			<div className="preview-container">
-        <div className="preview-page">
-          <h2>General Information</h2>
-          {Object.values(genData).map((gen, id) => (
-            <div key={id}>
-              <p>Name: {gen["Full Name"]}</p>
-              <p>Email: {gen.Email}</p>
-			  <p>Phone Number: {gen["Phone Number"]}</p>
-            </div>
-          ))}
+				<div className="preview-page">
+					<h2>General Information</h2>
+					{Object.values(genData).map((gen, id) => (
+						<div key={id}>
+							<p>Name: {gen["Full Name"]}</p>
+							<p>Email: {gen.Email}</p>
+							<p>Phone Number: {gen["Phone Number"]}</p>
+						</div>
+					))}
 
-          <h2>Education</h2>
-          {Object.values(eduData).map((edu, id) => (
-            <div key={id}>
-              <p>Institution: {edu.Institution}</p>
-              <p>Degree: {edu.Degree}</p>
-              <p>Start Date: {edu["Start Date"]}</p>
-              <p>End Date: {edu["End Date"]}</p>
-              <p>Location: {edu.Location}</p>
-            </div>
-          ))}
+					<h2>Education</h2>
+					{Object.values(eduData).map((edu, id) => (
+						<div key={id}>
+							<p>Institution: {edu.Institution}</p>
+							<p>Degree: {edu.Degree}</p>
+							<p>Start Date: {edu["Start Date"]}</p>
+							<p>End Date: {edu["End Date"]}</p>
+							<p>Location: {edu.Location}</p>
+						</div>
+					))}
 
-          <h2>Experience</h2>
-          {Object.values(expData).map((exp, id) => (
-            <div key={id}>
-              <p>Company: {exp.Company}</p>
-              <p>Position: {exp.Position}</p>
-			  <p>Start Date: {exp["Start Date"]}</p>
-              <p>End Date: {exp["End Date"]}</p>
-              <p>Location: {exp.Location}</p>
-			  <p>Description: {exp.Description}</p>
-            </div>
-          ))}
+					<h2>Experience</h2>
+					{Object.values(expData).map((exp, id) => (
+						<div key={id}>
+							<p>Company: {exp.Company}</p>
+							<p>Position: {exp.Position}</p>
+							<p>Start Date: {exp["Start Date"]}</p>
+							<p>End Date: {exp["End Date"]}</p>
+							<p>Location: {exp.Location}</p>
+							<p>Description: {exp.Description}</p>
+						</div>
+					))}
 
-          <h2>Projects</h2>
-          {Object.values(projData).map((proj, id) => (
-            <div key={id}>
-              <p>Project Name: {proj["Project Name"]}</p>
-              <p>Description: {proj.Description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
+					<h2>Projects</h2>
+					{Object.values(projData).map((proj, id) => (
+						<div key={id}>
+							<p>Project Name: {proj["Project Name"]}</p>
+							<p>Description: {proj.Description}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</>
+	);
 }
 
 export default App;
