@@ -1,18 +1,13 @@
-.input-card {
+.input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
     background-color: whitesmoke;
+
+    width: 350px;
     border-radius: 1rem;
     padding: 1rem;
     margin: 1rem;
-    align-items: center;
-    justify-content: center;
-    width: 350px;
-}
-
-.input-card > h2 {
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem 0rem;
 }

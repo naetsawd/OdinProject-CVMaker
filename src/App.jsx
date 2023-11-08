@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
 import InputForm from "./components/InputForm";
 
 import "./styles/Editor.css";
@@ -7,77 +6,105 @@ import "./styles/Preview.css";
 
 function App() {
 	const formTypes = ["general", "education", "experience", "projects"];
-	const [previewData, setPreviewData] = useState({});
+	const [genData, setGenData] = useState({});
+	const [eduData, setEduData] = useState({});
+	const [expData, setExpData] = useState({});
+	const [projData, setProjData] = useState({});
+	const [formCounts, setFormCounts] = useState({
+		general: 1,
+		education: 1,
+		experience: 1,
+		projects: 1,
+	});
 
-	const previewUpdate = (formType, formData) => {
-		setPreviewData((prevData) => {
-			const updatedData = { ...prevData };
+	const stateSelector = (formType) => {
+		switch (formType) {
+			case "general":
+				return setGenData;
+			case "education":
+				return setEduData;
+			case "experience":
+				return setExpData;
+			case "projects":
+				return setProjData;
+			default:
+				return null;
+		}
+	};
 
-			if (updatedData[formType]) {
-				updatedData[formType] = updatedData[formType].map((item) => {
-					if (item.cardTitle === formData[0]) {
-						return { cardTitle: formData[0], data: formData[1] };
-					}
-					return item;
-				});
-			} else {
-				updatedData[formType] = [
-					...(updatedData[formType] || []),
-					{ cardTitle: formData[0], data: formData[1] },
-				];
-			}
-
-			return updatedData;
-		});
-		console.log(previewData.education[0].data);
+	const addForm = (formType) => {
+		setFormCounts((prevCounts) => ({
+			...prevCounts,
+			[formType]: prevCounts[formType] + 1,
+		}));
 	};
 
 	return (
 		<>
 			<div className="editor-container">
 				{formTypes.map((formType) => (
-					<InputForm
-						key={formType}
-						previewUpdate={previewUpdate}
-						formType={formType}
-					/>
+					<div key={formType}>
+						{[...Array(formCounts[formType])].map((_, index) => (
+							<InputForm
+								key={`${formType}-${index}`}
+								formType={formType}
+								setData={stateSelector(formType)}
+							/>
+						))}
+						{formType !== "general" && (
+							<button onClick={() => addForm(formType)}>
+								{"+" + formType}
+							</button>
+						)}
+					</div>
 				))}
 			</div>
 
 			<div className="preview-container">
-				<div className="preview-page">
-					<div className="general-info">
-						<div>{previewData.general?.[0]?.cardTitle}</div>
-						<div>{previewData.general?.[0]?.data?.["Full name"]}</div>
-						<div>{previewData.general?.[0]?.data?.Email}</div>
-						<div>{previewData.general?.[0]?.data?.["Phone Number"]}</div>
-					</div>
-					<div className="education">
-						<div>{previewData.education?.[0]?.cardTitle}</div>
-						<div>{previewData.education?.[0]?.data?.Institution}</div>
-						<div>{previewData.education?.[0]?.data?.Degree}</div>
-						<div>{previewData.education?.[0]?.data?.["Start Date"]}</div>
-						<div>{previewData.education?.[0]?.data?.["End Date"]}</div>
-						<div>{previewData.education?.[0]?.data?.Location}</div>
-					</div>
-					<div className="experience">
-						<div>{previewData.experience?.[0]?.cardTitle}</div>
-						<div>{previewData.experience?.[0]?.data?.["Company Name"]}</div>
-						<div>{previewData.experience?.[0]?.data?.["Position Title"]}</div>
-						<div>{previewData.experience?.[0]?.data?.["Start Date"]}</div>
-						<div>{previewData.experience?.[0]?.data?.["End Date"]}</div>
-						<div>{previewData.experience?.[0]?.data?.Location}</div>
-						<div>{previewData.experience?.[0]?.data?.Description}</div>
-					</div>
-					<div className="projects">
-						<div>{previewData.projects?.[0]?.cardTitle}</div>
-						<div>{previewData.projects?.[0]?.data?.["Project Title"]}</div>
-						<div>{previewData.projects?.[0]?.data?.Description}</div>
-					</div>
-				</div>
-			</div>
-		</>
-	);
+        <div className="preview-page">
+          <h2>General Information</h2>
+          {Object.values(genData).map((gen, id) => (
+            <div key={id}>
+              <p>Name: {gen["Full Name"]}</p>
+              <p>Email: {gen.Email}</p>
+			  <p>Phone Number: {gen["Phone Number"]}</p>
+            </div>
+          ))}
+
+          <h2>Education</h2>
+          {Object.values(eduData).map((edu, id) => (
+            <div key={id}>
+              <p>Institution: {edu.Institution}</p>
+              <p>Degree: {edu.Degree}</p>
+              <p>Start Date: {edu["Start Date"]}</p>
+              <p>End Date: {edu["End Date"]}</p>
+              <p>Location: {edu.Location}</p>
+            </div>
+          ))}
+
+          <h2>Experience</h2>
+          {Object.values(expData).map((exp, id) => (
+            <div key={id}>
+              <p>Company: {exp.Company}</p>
+              <p>Position: {exp.Position}</p>
+			  <p>Start Date: {exp["Start Date"]}</p>
+              <p>End Date: {exp["End Date"]}</p>
+              <p>Location: {exp.Location}</p>
+			  <p>Description: {exp.Description}</p>
+            </div>
+          ))}
+
+          <h2>Projects</h2>
+          {Object.values(projData).map((proj, id) => (
+            <div key={id}>
+              <p>Project Name: {proj["Project Name"]}</p>
+              <p>Description: {proj.Description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default App;

@@ -1,10 +1,10 @@
 {
 	"general": {
-		"cardTitle": "General Information",
+		"formTitle": "General Information",
 		"formItems": [
 			{
 				"key": 1,
-				"title": "Full name",
+				"title": "Full Name",
 				"placeholder": "First and last name",
 				"type": "text"
 			},
@@ -23,7 +23,7 @@
 		]
 	},
 	"education": {
-		"cardTitle": "Education",
+		"formTitle": "Education",
 		"formItems": [
 			{
 				"key": 4,
@@ -58,17 +58,17 @@
 		]
 	},
 	"experience": {
-		"cardTitle": "Experience",
+		"formTitle": "Experience",
 		"formItems": [
 			{
 				"key": 9,
-				"title": "Company Name",
+				"title": "Company",
 				"placeholder": "Company name",
 				"type": "text"
 			},
 			{
 				"key": 10,
-				"title": "Position Title",
+				"title": "Position",
 				"placeholder": "Position Title",
 				"type": "text"
 			},
@@ -99,12 +99,12 @@
 		]
 	},
 	"projects": {
-		"cardTitle": "Projects",
+		"formTitle": "Projects",
 		"formItems": [
 			{
 				"key": 15,
-				"title": "Project Title",
-				"placeholder": "Company name",
+				"title": "Project Name",
+				"placeholder": "Project name",
 				"type": "text"
 			},
 			{
