@@ -6,16 +6,10 @@ import "./styles/Preview.css";
 
 function App() {
 	const formTypes = ["general", "education", "experience", "projects"];
-	const [genData, setGenData] = useState({});
-	const [eduData, setEduData] = useState({});
-	const [expData, setExpData] = useState({});
-	const [projData, setProjData] = useState({});
-	const [formCounts, setFormCounts] = useState({
-		general: 1,
-		education: 1,
-		experience: 1,
-		projects: 1,
-	});
+	const [genData, setGenData] = useState([]);
+	const [eduData, setEduData] = useState([]);
+	const [expData, setExpData] = useState([]);
+	const [projData, setProjData] = useState([]);
 
 	const setStateSelector = (formType) => {
 		switch (formType) {
@@ -47,78 +41,46 @@ function App() {
 		}
 	};
 
-	const addForm = (formType) => {
-		setFormCounts((prevCounts) => ({
-			...prevCounts,
-			[formType]: prevCounts[formType] + 1,
-		}));
-	};
-
-	const delForm = (formType) => {
-		const count = formCounts[formType]-1
-		delete stateSelector(formType)[formType+"-" + count]
-
-		setFormCounts((prevCounts) => ({
-			...prevCounts,
-			[formType]: prevCounts[formType] - 1,
-		}));
-	};
-
 	return (
 		<>
 			<div className="editor-container">
 				<button onClick={() => console.log(eduData)}>Edu Log</button>
 				{formTypes.map((formType) => (
-					<div key={formType}>
-						{[...Array(formCounts[formType])].map((_, index) => (
-							<InputForm
-								key={`${formType}-${index}`}
-								formKey={`${formType}-${index}`}
-								formType={formType}
-								setData={setStateSelector(formType)}
-							/>
-						))}
-						{formType !== "general" && (
-							<>
-								<button onClick={() => addForm(formType)}>
-									{"+" + formType}
-								</button>
-								{formCounts[formType] !== 1 && (
-									<button onClick={() => delForm(formType)}>
-										{"-" + formType}
-									</button>
-								)}
-							</>
-						)}
-					</div>
+					<React.Fragment key={formType}>
+						<InputForm
+							key={formType}
+							formType={formType}
+							setData={setStateSelector(formType)}
+						/>
+					</React.Fragment>
 				))}
 			</div>
 
 			<div className="preview-container">
 				<div className="preview-page">
-					<h2>General Information</h2>
+					<h2 className="section-title">General Information</h2>
 					{Object.values(genData).map((gen, id) => (
-						<div key={id}>
+						<div className="general-data" key={id}>
 							<p>Name: {gen["Full Name"]}</p>
 							<p>Email: {gen.Email}</p>
 							<p>Phone Number: {gen["Phone Number"]}</p>
 						</div>
 					))}
 
-					<h2>Education</h2>
-					{Object.values(eduData).map((edu, id) => (
-						<div key={id}>
-							<p>Institution: {edu.Institution}</p>
-							<p>Degree: {edu.Degree}</p>
-							<p>Start Date: {edu["Start Date"]}</p>
-							<p>End Date: {edu["End Date"]}</p>
-							<p>Location: {edu.Location}</p>
+					<h2 className="section-title">Education</h2>
+					{Object.values(eduData).map((eduItem, index) => (
+						<div className="education-data" key={index}>
+							<p>Institution: {eduItem.formData.Institution}</p>
+							<p>Degree: {eduItem.formData.Degree}</p>
+							<p>Start Date: {eduItem.formData["Start Date"]}</p>
+							<p>End Date: {eduItem.formData["End Date"]}</p>
+							<p>Location: {eduItem.formData.Location}</p>
 						</div>
 					))}
 
-					<h2>Experience</h2>
+					<h2 className="section-title">Experience</h2>
 					{Object.values(expData).map((exp, id) => (
-						<div key={id}>
+						<div className="experience-data" key={id}>
 							<p>Company: {exp.Company}</p>
 							<p>Position: {exp.Position}</p>
 							<p>Start Date: {exp["Start Date"]}</p>
@@ -128,9 +90,9 @@ function App() {
 						</div>
 					))}
 
-					<h2>Projects</h2>
+					<h2 className="section-title">Projects</h2>
 					{Object.values(projData).map((proj, id) => (
-						<div key={id}>
+						<div className="project-data" key={id}>
 							<p>Project Name: {proj["Project Name"]}</p>
 							<p>Description: {proj.Description}</p>
 						</div>

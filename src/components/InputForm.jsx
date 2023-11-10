@@ -1,53 +1,76 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import formItemData from "../assets/formData.json";
 import "../styles/InputForm.css";
 
-function InputForm({ formKey, formType, setData }) {
+function InputForm({ formType, setData }) {
 	const { formTitle, formItems } = formItemData[formType] || {
-		cardTitle: "Default",
+		formTitle: "Default",
 		formItems: [],
 	};
 
-	const [formData, setFormData] = useState({});
-	const [uid, setUid] = useState("");
+	const [formsList, setFormsList] = useState([{}]);
 
-	useEffect(() => {
-		setUid(formKey);
-	}, []);
-
-	const handleInputChange = (title, value) => {
-		setFormData((prevData) => ({
-			...prevData,
-			[title]: value,
-		}));
+	const handleChange = (index, field, value) => {
+		const updatedFormsList = formsList.map((form, i) =>
+			i === index ? { ...form, [field]: value } : form
+		);
+		setFormsList(updatedFormsList);
 	};
 
-	const handleUpdate = (e) => {
+	const handleSubmit = (index, e) => {
 		e.preventDefault();
-		const formDataWithId = { [uid]: formData };
-		console.log(formDataWithId);
-		setData((prevData) => ({ ...prevData, ...formDataWithId }));
+		const formData = formsList[index];
+		setData((prevData) => {
+			const updatedData = [...prevData];
+			updatedData[index] = { formData };
+			return updatedData;
+		});
+	};
+
+	const addForm = () => {
+		setFormsList([...formsList, {}]);
+	};
+
+	const delForm = (index) => {
+		const updatedFormsList = formsList.filter((_, i) => i !== index);
+		setFormsList(updatedFormsList);
+
+		setData((prevData) => {
+			const updatedData = prevData.filter((_, i) => i !== index);
+			return updatedData;
+		});
 	};
 
 	return (
 		<>
-			<form className="input-form" onSubmit={handleUpdate}>
-				<h2>{formTitle}</h2>
-				{formItems.map((formItem) => (
-					<div key={formItem.title}>
-						<label>{formItem.title}</label>
-						<input
-							required
-							placeholder={formItem.placeholder}
-							type={formItem.type}
-							onChange={(e) =>
-								handleInputChange(formItem.title, e.target.value)
-							}
-						/>
-					</div>
-				))}
-				<button type="submit">Update</button>
-			</form>
+			{formsList.map((form, index) => (
+				<div key={index} className="input-card">
+					<form className="input-form" onSubmit={(e) => handleSubmit(index, e)}>
+						<h2>{formTitle}</h2>
+						{formItems.map((formItem) => (
+							<React.Fragment key={formItem.title}>
+								<label>{formItem.title}</label>
+								<input
+									placeholder={formItem.placeholder}
+									type={formItem.type}
+									value={form[formItem.title] || ""}
+									onChange={(e) =>
+										handleChange(index, formItem.title, e.target.value)
+									}
+								/>
+							</React.Fragment>
+						))}
+						<button type="submit">Update</button>
+					</form>
+					{formType !== "general" && index !== 0 && (
+						<button onClick={() => delForm(index)}>Remove</button>
+					)}
+					<button onClick={() => console.log(index)}>Index</button>
+				</div>
+			))}
+			{formType !== "general" && (
+				<button onClick={addForm}>{"+" + formType}</button>
+			)}
 		</>
 	);
 }
