@@ -1,0 +1,23 @@
+.sections-container-margins {
+    margin: 1rem;
+}
+
+/* General Information */
+.general-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	justify-items: center;
+
+	font-size: 1rem;
+}
+
+.general-section a {
+	font-size: 1rem;
+	text-decoration: none;
+}
+
+.general-section > :nth-child(1) {
+	font-size: 2.2rem;
+	grid-column: span 3;
+}

@@ -51,6 +51,7 @@ function InputForm({ formType, setData }) {
 							<React.Fragment key={formItem.title}>
 								<label>{formItem.title}</label>
 								<input
+									required
 									placeholder={formItem.placeholder}
 									type={formItem.type}
 									value={form[formItem.title] || ""}
@@ -65,7 +66,6 @@ function InputForm({ formType, setData }) {
 					{formType !== "general" && index !== 0 && (
 						<button onClick={() => delForm(index)}>Remove</button>
 					)}
-					<button onClick={() => console.log(index)}>Index</button>
 				</div>
 			))}
 			{formType !== "general" && (

@@ -10,15 +10,21 @@
 			},
 			{
 				"key": 2,
+				"title": "Phone Number",
+				"placeholder": "Work/personal phone number",
+				"type": "tel"
+			},
+			{
+				"key": 3,
 				"title": "Email",
 				"placeholder": "Work/personal email address",
 				"type": "email"
 			},
 			{
-				"key": 3,
-				"title": "Phone Number",
+				"key": 4,
+				"title": "LinkedIn Profile",
 				"placeholder": "Work/personal phone number",
-				"type": "tel"
+				"type": "url"
 			}
 		]
 	},
