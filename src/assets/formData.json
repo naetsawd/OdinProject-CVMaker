@@ -39,7 +39,7 @@
 			},
 			{
 				"key": 5,
-				"title": "Degree",
+				"title": "Study",
 				"placeholder": "Degree/Field of study",
 				"type": "text"
 			},

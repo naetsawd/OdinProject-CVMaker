@@ -1,5 +1,5 @@
 .sections-container-margins {
-    margin: 1rem;
+	margin: 1rem;
 }
 
 /* General Information */
@@ -9,11 +9,10 @@
 
 	justify-items: center;
 
-	font-size: 1rem;
+	font-size: 1.2rem;
 }
 
 .general-section a {
-	font-size: 1rem;
 	text-decoration: none;
 }
 

@@ -7,3 +7,31 @@
     height: 100%;  
     padding: 1rem;
 }
+
+.add-form-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    width: 150px;
+    cursor: pointer;
+    background-color: darkseagreen;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-transform: capitalize;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .add-form-button:hover {
+    background-color: seagreen;
+  }
+  
+  .add-form-button:active {
+    transform: scale(0.95);
+  }
+  
+
+.add-form-button > img {
+    width: 15%;
+}

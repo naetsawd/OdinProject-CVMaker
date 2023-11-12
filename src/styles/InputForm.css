@@ -1,15 +1,115 @@
 .input-card {
-    background-color: whitesmoke;
+	background-color: white;
+	box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.1),
+		0 8px 16px -8px rgba(0, 0, 0, 0.25);
 
-    width: 350px;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin: 1rem;
+	width: 350px;
+	border-radius: 1rem;
+	margin: 1rem;
+
+	overflow: hidden;
+}
+
+.form-banner {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	color: white;
+	background-color: darkseagreen;
+	padding: 0.5rem 1rem;
+}
+
+.form-banner:hover {
+	cursor: pointer;
+}
+
+.form-banner > h2 {
+	margin-right: auto;
+	font-size: 1.6rem;
+}
+
+.form-banner > img {
+	width: 10%;
+	transition: transform 0.5s ease;
+}
+
+.form-banner > img.rotate {
+	transform: scaleY(-1);
 }
 
 .input-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	margin: 0.5rem 1rem 1rem;
+	max-height: 600px;
+	overflow: hidden;
+	opacity: 1;
+	padding: 0rem 0.5rem;
+	transition: max-height 0.5s ease, opacity 1s ease, margin-bottom 0.4s ease;
+}
+
+.input-form.collapsed {
+	max-height: 0;
+	opacity: 0;
+	margin-bottom: -0.5rem;
+}
+
+.input-form > label {
+	display: block;
+	font-size: 1.1rem;
+	margin-left: 0.2rem;
+}
+
+.input-form > input {
+	width: 100%;
+	margin: 0.3rem 0rem 0.8rem;
+	padding: 0.3rem 0.5rem;
+	font-size: 0.9rem;
+	border: 2px solid darkseagreen;
+	border-radius: 0.5rem;
+	outline: none;
+	transition: border-color 0.3s ease;
+  }
+  
+  .input-form > input:hover {
+	border-color: seagreen;
+  }
+  
+  .input-form > input:focus {
+	border-color: seagreen;
+	box-shadow: 0 0 5px rgba(46, 196, 182, 0.5);
+  }
+  
+
+.form-buttons {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.6rem;
+}
+
+.form-buttons > button {
+	display: inline-block;
+	padding: 0.3rem 0.5rem;
+	font-size: 0.8rem;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	border: 2px solid darkseagreen;
+	color: white;
+	background-color: darkseagreen;
+	border-radius: 0.5rem;
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.form-buttons > button:hover {
+	background-color: white;
+	color: darkseagreen;
+}
+
+.form-buttons > button:active {
+	transform: scale(0.95);
 }

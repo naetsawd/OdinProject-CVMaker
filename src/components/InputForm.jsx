@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import formItemData from "../assets/formData.json";
 import "../styles/InputForm.css";
+import collapseIcon from "../assets/collapse.png";
+import addIcon from "../assets/add.png";
 
 function InputForm({ formType, setData }) {
 	const { formTitle, formItems } = formItemData[formType] || {
@@ -41,12 +43,32 @@ function InputForm({ formType, setData }) {
 		});
 	};
 
+	const collapseForm = (index) => {
+		setFormsList((prevFormsList) => {
+			const updatedFormsList = prevFormsList.map((form, i) =>
+				i === index ? { ...form, isVisible: !form.isVisible } : form
+			);
+			return updatedFormsList;
+		});
+	};
+
 	return (
 		<>
 			{formsList.map((form, index) => (
 				<div key={index} className="input-card">
-					<form className="input-form" onSubmit={(e) => handleSubmit(index, e)}>
+					<div className="form-banner" onClick={() => collapseForm(index)}>
 						<h2>{formTitle}</h2>
+						<img
+							className={!form.isVisible ? "" : "rotate"}
+							src={collapseIcon}
+							alt="Expand or Collapse Form"
+						/>
+					</div>
+
+					<form
+						className={`input-form ${!form.isVisible ? "collapsed" : ""}`}
+						onSubmit={(e) => handleSubmit(index, e)}
+					>
 						{formItems.map((formItem) => (
 							<React.Fragment key={formItem.title}>
 								<label>{formItem.title}</label>
@@ -61,15 +83,20 @@ function InputForm({ formType, setData }) {
 								/>
 							</React.Fragment>
 						))}
-						<button type="submit">Update</button>
+						<div className="form-buttons">
+							<button type="submit">Update</button>
+							{index !== 0 && (
+								<button onClick={() => delForm(index)}>Remove</button>
+							)}
+						</div>
 					</form>
-					{formType !== "general" && index !== 0 && (
-						<button onClick={() => delForm(index)}>Remove</button>
-					)}
 				</div>
 			))}
 			{formType !== "general" && (
-				<button onClick={addForm}>{"+" + formType}</button>
+				<div className="add-form-button" onClick={addForm}>
+					<img src={addIcon} alt={"Add" + formTitle} />
+					<p>{formType}</p>
+				</div>
 			)}
 		</>
 	);
