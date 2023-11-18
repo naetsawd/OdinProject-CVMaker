@@ -11,7 +11,7 @@ function SectionPreview({ formType, formData }) {
 				{formData.length > 0 && formType !== "general" && (
 					<>
 						<h3 className="section-title">{formType.toUpperCase()}</h3>
-						{formType !== "projects" && <div className="divider"></div>}
+						<div className="divider"></div>
 					</>
 				)}
 				{formData.map((data, index) => (

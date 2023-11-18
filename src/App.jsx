@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import InputForm from "./components/InputForm";
 import SectionPreview from "./components/SectionPreview";
+import Footer from "./components/Footer";
 
 import "./styles/Editor.css";
 import "./styles/Preview.css";
@@ -71,6 +72,8 @@ function App() {
 					))}
 				</div>
 			</div>
+
+			<Footer />
 		</>
 	);
 }

@@ -45,18 +45,12 @@
 			},
 			{
 				"key": 6,
-				"title": "Start Date",
-				"placeholder": "Start Date",
+				"title": "Start & End Dates",
+				"placeholder": "Start Date - End Date/Present",
 				"type": "text"
 			},
 			{
 				"key": 7,
-				"title": "End Date",
-				"placeholder": "End Date",
-				"type": "text"
-			},
-			{
-				"key": 8,
 				"title": "Location",
 				"placeholder": "Location",
 				"type": "text"
@@ -67,37 +61,31 @@
 		"formTitle": "Experience",
 		"formItems": [
 			{
-				"key": 9,
+				"key": 8,
 				"title": "Company",
 				"placeholder": "Company name",
 				"type": "text"
 			},
 			{
-				"key": 10,
+				"key": 9,
 				"title": "Position",
 				"placeholder": "Position Title",
 				"type": "text"
 			},
 			{
+				"key": 10,
+				"title": "Start & End Dates",
+				"placeholder": "Enter like Start Date - End Date/Present",
+				"type": "text"
+			},
+			{
 				"key": 11,
-				"title": "Start Date",
-				"placeholder": "Start Date",
-				"type": "text"
-			},
-			{
-				"key": 12,
-				"title": "End Date",
-				"placeholder": "End Date",
-				"type": "text"
-			},
-			{
-				"key": 13,
 				"title": "Location",
 				"placeholder": "Location",
 				"type": "text"
 			},
 			{
-				"key": 14,
+				"key": 12,
 				"title": "Description",
 				"placeholder": "Role description",
 				"type": "text"
@@ -108,13 +96,13 @@
 		"formTitle": "Projects",
 		"formItems": [
 			{
-				"key": 15,
+				"key": 13,
 				"title": "Project Name",
 				"placeholder": "Project name",
 				"type": "text"
 			},
 			{
-				"key": 16,
+				"key": 14,
 				"title": "Description",
 				"placeholder": "Role description",
 				"type": "text"

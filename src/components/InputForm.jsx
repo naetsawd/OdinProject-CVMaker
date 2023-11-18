@@ -72,17 +72,29 @@ function InputForm({ formType, setData }) {
 						{formItems.map((formItem) => (
 							<React.Fragment key={formItem.title}>
 								<label>{formItem.title}</label>
-								<input
-									required
-									placeholder={formItem.placeholder}
-									type={formItem.type}
-									value={form[formItem.title] || ""}
-									onChange={(e) =>
-										handleChange(index, formItem.title, e.target.value)
-									}
-								/>
+								{formItem.title === "Description" ? (
+									<textarea
+										required
+										placeholder={formItem.placeholder}
+										value={form[formItem.title] || ""}
+										onChange={(e) =>
+											handleChange(index, formItem.title, e.target.value)
+										}
+									/>
+								) : (
+									<input
+										required
+										placeholder={formItem.placeholder}
+										type={formItem.type}
+										value={form[formItem.title] || ""}
+										onChange={(e) =>
+											handleChange(index, formItem.title, e.target.value)
+										}
+									/>
+								)}
 							</React.Fragment>
 						))}
+
 						<div className="form-buttons">
 							<button type="submit">Update</button>
 							{index !== 0 && (

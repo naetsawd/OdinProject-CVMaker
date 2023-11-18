@@ -1,11 +1,11 @@
 .sections-container-margins {
-	margin: 1rem;
+	margin: 0.5rem 0rem;
 }
 
 /* General Information */
 .general-section {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(3, 1fr);
 
 	justify-items: center;
 
@@ -19,4 +19,84 @@
 .general-section > :nth-child(1) {
 	font-size: 2.2rem;
 	grid-column: span 3;
+}
+
+/* Education */
+.education-section {
+	display: grid;
+	grid-template-areas: "study dates" "institution location";
+
+	font-size: 1.1rem;
+
+	margin-bottom: 1rem;
+}
+
+.education-section :nth-child(1) {
+	grid-area: institution;
+}
+
+.education-section :nth-child(2) {
+	grid-area: study;
+	font-weight: 600;
+}
+
+.education-section :nth-child(3) {
+	grid-area: dates;
+	justify-self: right;
+}
+
+.education-section :nth-child(4) {
+	grid-area: location;
+	justify-self: right;
+}
+
+/* Experience */
+.experience-section {
+	display: grid;
+	grid-template-areas: "position dates" "company location" "desc desc";
+
+	font-size: 1.1rem;
+
+	margin-bottom: 1rem;
+}
+
+.experience-section :nth-child(1) {
+	grid-area: company;
+}
+
+.experience-section :nth-child(2) {
+	grid-area: position;
+	font-weight: 600;
+}
+
+.experience-section :nth-child(3) {
+	grid-area: dates;
+	justify-self: right;
+}
+
+.experience-section :nth-child(4) {
+	grid-area: location;
+	justify-self: right;
+}
+
+.experience-section :nth-child(5) {
+	grid-area: desc;
+	justify-self: left;
+}
+
+/* Projects */
+.projects-section {
+	display: grid;
+	grid-template-columns: 1fr;
+
+	font-size: 1.1rem;
+
+	margin-bottom: 1rem;
+}
+
+.projects-section :nth-child(1) {
+	font-weight: 600;
+}
+
+.projects-section :nth-child(2) {
 }
