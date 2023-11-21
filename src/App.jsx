@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+
 import InputForm from "./components/InputForm";
 import SectionPreview from "./components/SectionPreview";
 import Footer from "./components/Footer";
+import Utilities from "./components/Utilities";
+import Header from "./components/Header";
 
 import "./styles/Editor.css";
 import "./styles/Preview.css";
@@ -45,6 +48,8 @@ function App() {
 
 	return (
 		<>
+			<Header />
+
 			<div className="editor-container">
 				{formTypes.map((formType) => (
 					<React.Fragment key={formType + "-input"}>
@@ -72,6 +77,8 @@ function App() {
 					))}
 				</div>
 			</div>
+
+			<Utilities />
 
 			<Footer />
 		</>

@@ -1,5 +1,5 @@
 .footer-container {
-	grid-column: span 2;
+	grid-column: span 3;
 	background-color: darkseagreen;
 	display: flex;
 	align-items: center;

@@ -1,0 +1,39 @@
+.utilities-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 100%;
+	height: 100%;
+	padding: 1rem;
+}
+
+.utilities-card {
+	display: grid;
+	grid-auto-flow: row;
+	place-items: center;
+
+	background-color: darkseagreen;
+	width: 75%;
+	height: 23%;
+
+	box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.1),
+		0 8px 16px -8px rgba(0, 0, 0, 0.25);
+
+	border-radius: 1rem;
+	margin: 1rem 0rem;
+}
+
+.utility-button {
+	border: 2px white dotted;
+	border-radius: 1rem;
+	width: 80%;
+	height: 80%;
+	transition: background-color 0.5s, transform 0.5s;
+}
+
+.utility-button:hover {
+	cursor: pointer;
+	background-color: seagreen;
+	transform: scale(1.05);
+}

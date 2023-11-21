@@ -14,7 +14,7 @@ body {
 	width: 100%;
 
 	display: grid;
-	grid-template-columns: 40vw 60vw;
+	grid-template-columns: 30vw 60vw 10vw;
 }
 
 button:hover {

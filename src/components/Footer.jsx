@@ -4,7 +4,7 @@ import "../styles/Footer.css";
 
 import ghLogo from "../assets/githubLogo.svg";
 
-const Footer = () => {
+function Footer() {
 	return (
 		<div className="footer-container">
 			<a
