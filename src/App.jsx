@@ -5,6 +5,7 @@ import SectionPreview from "./components/SectionPreview";
 import Footer from "./components/Footer";
 import Utilities from "./components/Utilities";
 import Header from "./components/Header";
+import InfoModal from "./components/InfoModal";
 
 import "./styles/Editor.css";
 import "./styles/Preview.css";
@@ -15,6 +16,7 @@ function App() {
 	const [eduData, setEduData] = useState([]);
 	const [expData, setExpData] = useState([]);
 	const [projData, setProjData] = useState([]);
+	const [isModalVisible, setIsModalVisible] = useState(false);
 
 	const setStateSelector = (formType) => {
 		switch (formType) {
@@ -63,7 +65,7 @@ function App() {
 			</div>
 
 			<div className="preview-container">
-				<div className="preview-page">
+				<div id="download-div" className="preview-page">
 					{formTypes.map((formType) => (
 						<>
 							<React.Fragment key={formType + "-preview"}>
@@ -78,9 +80,12 @@ function App() {
 				</div>
 			</div>
 
-			<Utilities />
-
+			<Utilities setIsModalVisible={setIsModalVisible} />
 			<Footer />
+			<InfoModal
+				isModalVisible={isModalVisible}
+				setIsModalVisible={setIsModalVisible}
+			/>
 		</>
 	);
 }

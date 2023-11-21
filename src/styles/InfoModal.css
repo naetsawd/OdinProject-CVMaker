@@ -1,0 +1,49 @@
+.info-modal-container {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.visible {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding-top: 10%;
+}
+
+.modal-card {
+	width: 50%;
+	height: 25%;
+	background-color: white;
+	overflow: hidden;
+	border-radius: 1rem;
+	box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.2),
+		0 8px 16px -8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-banner {
+	display: flex;
+	flex-direction: row;
+	background-color: darkseagreen;
+	color: white;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.5rem 1rem;
+}
+
+.modal-banner > img {
+	width: 5%;
+	height: 5%;
+	transform: rotate(45deg);
+	margin-left: auto;
+	cursor: pointer;
+	transition: transform 0.25s ease;
+}
+
+.modal-banner > img:hover {
+	transform: scale(1.15) rotate(-225deg);
+}

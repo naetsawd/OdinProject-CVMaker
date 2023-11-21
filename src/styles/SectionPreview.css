@@ -1,3 +1,7 @@
+.section-title {
+	font-size: 1.1rem;
+}
+
 .sections-container-margins {
 	margin: 0.5rem 0rem;
 }
@@ -9,7 +13,7 @@
 
 	justify-items: center;
 
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 }
 
 .general-section a {
@@ -17,7 +21,7 @@
 }
 
 .general-section > :nth-child(1) {
-	font-size: 2.2rem;
+	font-size: 2rem;
 	grid-column: span 3;
 }
 
@@ -26,7 +30,7 @@
 	display: grid;
 	grid-template-areas: "study dates" "institution location";
 
-	font-size: 1.1rem;
+	font-size: 1rem;
 
 	margin-bottom: 1rem;
 }
@@ -55,7 +59,7 @@
 	display: grid;
 	grid-template-areas: "position dates" "company location" "desc desc";
 
-	font-size: 1.1rem;
+	font-size: 1rem;
 
 	margin-bottom: 1rem;
 }
@@ -89,14 +93,11 @@
 	display: grid;
 	grid-template-columns: 1fr;
 
-	font-size: 1.1rem;
+	font-size: 1rem;
 
 	margin-bottom: 1rem;
 }
 
 .projects-section :nth-child(1) {
 	font-weight: 600;
-}
-
-.projects-section :nth-child(2) {
 }
