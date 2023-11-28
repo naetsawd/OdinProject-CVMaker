@@ -17,7 +17,6 @@
 
 .modal-card {
 	width: 50%;
-	height: 25%;
 	background-color: white;
 	overflow: hidden;
 	border-radius: 1rem;
@@ -32,7 +31,7 @@
 	color: white;
 	justify-content: flex-start;
 	align-items: center;
-	padding: 0.5rem 1rem;
+	padding: 0.25rem 1rem;
 }
 
 .modal-banner > img {
@@ -45,5 +44,13 @@
 }
 
 .modal-banner > img:hover {
-	transform: scale(1.15) rotate(-225deg);
+	transform: scale(1.05) rotate(-225deg);
+}
+
+.modal-list {
+	padding: 0.5rem 2rem;
+}
+
+.modal-list > li {
+	margin: 0.25rem 0rem;
 }
